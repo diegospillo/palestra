@@ -1,4 +1,4 @@
-/*const con = require("./connection.js");
+const con = require("./connection.js");
 
 module.exports = { 
     ins : (id,peso,serie,ripetizioni) =>{
@@ -16,4 +16,4 @@ module.exports = {
       });
     })
     }
-  }*/
+  }

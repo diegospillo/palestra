@@ -1,4 +1,4 @@
-/*var mysql = require('mysql');
+var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "localhost",
@@ -8,4 +8,3 @@ var con = mysql.createConnection({
 });
 console.log("connesso")
 module.exports = con;
-*/
