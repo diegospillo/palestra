@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Gymmify</title>
+  <link rel="stylesheet" href="<%= s_url %>/css/style.css">
+  <link rel="website icon" href="https://www.creativefabrica.com/wp-content/uploads/2020/02/13/Gym-Logo-Graphics-1-19-580x386.jpg">
+  <link 
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+  <div id="barra">
+    <a href="<%= s_url %>/scheda/1"><button id="btn1">Giorno1</button></a>
+    <a href="<%= s_url %>/scheda/2"><button id="btn2">Giorno2</button></a>
+    <a href="<%= s_url %>/scheda/3"><button id="btn3">Giorno3</button></a>
+  </div>
+  <div id="nav1" class="content">
+    <% if(uscita.length<1){ %>
+      <center>
+        <h1>Scheda Non Trovata!</h1>
+      </center>
+      <% }else{ %>
+      <script>
+            document.getElementById("btn<%=n_esercizio%>").style.border="solid 10px black";
+      </script>
+        <% for(var i=0;i<uscita.length;i++) {%>
+          <div class="content_child">
+            <div class="box1">
+              <h1><%= uscita[i].nome %></h1>
+              <h2>Peso: <%= uscita[i].peso %></h2>
+              <h2>Ripetizioni: <%= uscita[i].ripetizioni %></h2>
+              <div class="form">
+                <% for(var o=0;o<uscita[i].serie;o++){ %>
+                  <input type="checkbox" name="<%= uscita[i].id + "_" + (o+1) %>">
+                  <% } %>
+              </div>
+            </div>
+            <div class="box2" style="display: flex;">
+              <img src="<%= uscita[i].img %>" alt="">
+              <a href="<%= s_url %>/scheda/modifica/<%= uscita[i].id %>"><i class="fas fa-edit"></i></a>
+            </div>
+          </div>
+          <% }} %>
+  </div>
+</body>
+
+</html>

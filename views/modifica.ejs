@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Modifica | Gymmify</title>
+  <link rel="stylesheet" href="<%= s_url %>/css/modifica.css">
+  <link rel="website icon" href="https://www.creativefabrica.com/wp-content/uploads/2020/02/13/Gym-Logo-Graphics-1-19-580x386.jpg">
+</head>
+
+<body>
+  <form action="/scheda/modifica/<%= val[0].id %>/send" method="get">
+        <h1>Nome: <%= val[0].nome %> </h1>
+        <h1>Peso:<input type="text" name="peso" value="<%= val[0].peso %> "></h1>
+        <h1>Serie:<input type="text" name="serie" value="<%= val[0].serie %>"></h1>
+        <h1>Ripetizioni:<input type="text" name="ripetizioni" value="<%= val[0].ripetizioni %> "></h1>
+        <input type="submit">
+    </form>
+</body>
+
+</html>

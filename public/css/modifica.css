@@ -1,0 +1,27 @@
+body{
+    background-image: url("https://media.tenor.com/naz_mBzwmp0AAAAM/rexouium-boxing.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial;
+    color: black;
+}
+form{
+    position: absolute;
+    left: 95px;
+    right: 95px;
+    top: 500px;
+    font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.575);
+    padding: 50px;
+   
+}
+form input[type="text"]{
+    font-size: 50px;
+    width: 350px;
+}
+form input[type="submit"]{
+    font-size: 60px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
