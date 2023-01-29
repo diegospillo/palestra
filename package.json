@@ -12,7 +12,7 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon mysql/connection.js"
   },
   "keywords": [],
   "author": "",

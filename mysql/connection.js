@@ -4,8 +4,10 @@ var con = mysql.createConnection({
   host: "127.0.0.1",
   user: "id19588874_database",
   password: "Diego120405.",
-  database: "id19588874_dbspillo",
-  port:"3001"
+  database: "id19588874_dbspillo"
 });
-console.log("connesso")
-module.exports = con;
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+//module.exports = con;
