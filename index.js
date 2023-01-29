@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     res.render('sito', { uscita: data, n_esercizio: "0",s_url:dominio });
   })
 
-  res.end("ciao cuore");
+  //res.end("ciao cuore");
 
 })
 
