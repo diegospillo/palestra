@@ -9,10 +9,10 @@ app.use('/img', express.static(__dirname + 'public/img'))
 
 app.set('views', './views')
 app.set('view engine', 'ejs')
-
+console.log("1");
 var scheda = require('./mysql/query.js');
-const dominio = "https://palestra.onrender";
-
+const dominio = "https://palestra.onrender.com";
+console.log("2");
 app.get('/', (req, res) => {
  
   scheda.select().then((data) => {
