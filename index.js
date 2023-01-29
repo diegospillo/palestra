@@ -11,7 +11,7 @@ app.set('views', './views')
 app.set('view engine', 'ejs')
 
 var scheda = require('./mysql/query.js');
-const dominio = "http://palestra.onrender";
+const dominio = "https://palestra.onrender";
 
 app.get('/', (req, res) => {
  
