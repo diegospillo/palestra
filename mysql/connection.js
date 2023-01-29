@@ -5,7 +5,7 @@ var con = mysql.createConnection({
   user: "id19588874_database",
   password: "Diego120405.",
   database: "id19588874_dbspillo",
-  socketPath: '/var/run/mysqld/mysqld.sock'
+  socketPath: '/var/lib/mysqld/mysqld.sock'
 });
 console.log("connesso")
 module.exports = con;
