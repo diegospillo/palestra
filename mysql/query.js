@@ -10,11 +10,11 @@ module.exports = {
     },
     select: () =>{return new Promise((resolve, reject) => {
       //console.log("Select")
-      if(con.query("SELECT * FROM scheda", (err, result, fields) => {
+      con.query("SELECT * FROM scheda2", (err, result, fields) => {
         //if (err) throw err;
          console.log(result);
           resolve(result);
-      })){console.log("ok")}
+      })
     })
     }
   }
