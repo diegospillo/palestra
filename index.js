@@ -9,13 +9,13 @@ app.use('/img', express.static(__dirname + 'public/img'))
 
 app.set('views', './views')
 app.set('view engine', 'ejs')
-console.log("1");
+console.log(process.env.MYSQL_USER);
 /*var scheda = require('./mysql/query.js');
 const dominio = "https://palestra.onrender.com";*/
 console.log("2");
 app.get('/', (req, res) => {
   var mysql = require('mysql');
-  
+
    var mysqlHost = process.env.MYSQL_HOST || 'localhost';
    var mysqlPort = process.env.MYSQL_PORT || '3306';
    var mysqlUser = process.env.MYSQL_USER || 'root';
