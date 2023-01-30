@@ -17,10 +17,10 @@ app.get('/', (req, res) => {
   var mysql = require('mysql');
 
   var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "palestra"
+    host: "127.0.0.1",
+    user: "id19588874_database",
+    password: "Diego120405.",
+    database: "id19588874_dbspillo"
   });
   
   con.connect(function(err) {
