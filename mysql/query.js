@@ -12,7 +12,6 @@ module.exports = {
       //console.log("Select")
       con.query("SELECT * FROM scheda", (err, result, fields) => {
         if (err) throw err;
-        console.log(result);
           resolve(result);
       });
     })
