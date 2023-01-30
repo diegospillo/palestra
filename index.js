@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
   scheda.select().then((data) => {
     //res.render('sito', { uscita: data, n_esercizio: "0",s_url:dominio });
-    res.send("Kol:"+data);
+    res.send("Kol:"+data[0].nome);
   })
 
 })
