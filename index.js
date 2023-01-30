@@ -15,13 +15,20 @@ const dominio = "https://palestra.onrender.com";*/
 console.log("2");
 app.get('/', (req, res) => {
   var mysql = require('mysql');
+  
+   var mysqlHost = process.env.MYSQL_HOST || 'localhost';
+   var mysqlPort = process.env.MYSQL_PORT || '3306';
+   var mysqlUser = process.env.MYSQL_USER || 'root';
+   var mysqlPass = process.env.MYSQL_PASS || '';
+   var mysqlDB   = process.env.MYSQL_DB   || 'palestra';
 
-  var con = mysql.createConnection({
-    host: "localhost",
-    user: "id19588874_database",
-    password: "Diego120405.",
-    database: "id19588874_dbspillo"
-  });
+   var con = mysql.createConnection({
+     host: mysqlHost,
+     port: mysqlPort,
+     user: mysqlUser,
+     password: mysqlPass,
+     database: mysqlDB
+   });
   
   con.connect(function(err) {
     if (err) throw err;
