@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
   var mysql = require('mysql');
 
   var con = mysql.createConnection({
-    host: "127.0.0.1",
+    host: "localhost",
     user: "id19588874_database",
     password: "Diego120405.",
     database: "id19588874_dbspillo"
