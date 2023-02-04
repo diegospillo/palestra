@@ -14,6 +14,7 @@ var mysql = require('mysql');
      database: mysqlDB
    });
 
+   
 
 console.log("connesso")
 module.exports = con;
