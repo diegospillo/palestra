@@ -1,4 +1,4 @@
-var mysql = require('mysql2');
+var mysql = require('mysql');
 
    var mysqlHost = process.env.MYSQL_HOST || 'localhost';
    var mysqlPort = process.env.MYSQL_PORT || '3306';
@@ -14,6 +14,6 @@ var mysql = require('mysql2');
      database: mysqlDB
    });
 
-   
+
 console.log("connesso")
 module.exports = con;
