@@ -27,12 +27,26 @@ const client = new Client({
   password: 'htBgzUNs9G9GBCFC2nPexpa9j16uNkNP',
   port: '5432',
 })
-client.connect(function(err) {
+/*client.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
   res.end("OK");
-});
-
+});*/
+const query=`CREATE TABLE IF NOT EXISTS "users" (
+  "id" INT(100) AUTO_INCREMENT NOT NULL,
+  "nome" VARCHAR(100) NOT NULL,
+  "esercizio" VARCHAR(100) NOT NULL,
+  "tipo" VARCHAR(100) NOT NULL,
+  "peso" VARCHAR(100) NOT NULL,
+  "serie" VARCHAR(100) NOT NULL,
+  "ripetizioni" VARCHAR(100) NOT NULL,
+  "img" VARCHAR(100) NOT NULL
+   );`;
+client.query(query,(err)=>{
+  if (err) throw err;
+  console.log("FATTO")
+})
+res.end("OK");
 })
 
 app.get('/scheda/:esercizio', (req, res) => {
