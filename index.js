@@ -32,12 +32,9 @@ const client = new Client({
   console.log("Connected!");
   res.end("OK");
 });*/
-const query=`INSERT INTO (\`id\`,\`nome\`,\`esercizio\`,\`tipo\`,\`peso\`,\`serie\`,\`ripetizioni\`,\`img\`) VALUES (1,'Squat Bilanciere','1','Gambe','100Kg','5','20','https://www.evolutionfit.it/wp-content/uploads/quadricipiti-squat-bilanciere-parallelo-ag.png');`;
-client.query(query,(err)=>{
-  if (err) throw err;
-  console.log("FATTO")
-})
 
+client.query("INSERT INTO scheda (id, nome, esercizio, tipo, peso, serie, ripetizioni, img) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",[1,'Squat Bilanciere','1','Gambe','100Kg','5','20','https://www.evolutionfit.it/wp-content/uploads/quadricipiti-squat-bilanciere-parallelo-ag.png']).catch(err => console.log(err));
+res.end("OK");
 })
 
 app.get('/scheda/:esercizio', (req, res) => {
