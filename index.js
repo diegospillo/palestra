@@ -32,21 +32,12 @@ const client = new Client({
   console.log("Connected!");
   res.end("OK");
 });*/
-const query=`CREATE TABLE IF NOT EXISTS "users" (
-  "id" INT(100) AUTO_INCREMENT NOT NULL,
-  "nome" VARCHAR(100) NOT NULL,
-  "esercizio" VARCHAR(100) NOT NULL,
-  "tipo" VARCHAR(100) NOT NULL,
-  "peso" VARCHAR(100) NOT NULL,
-  "serie" VARCHAR(100) NOT NULL,
-  "ripetizioni" VARCHAR(100) NOT NULL,
-  "img" VARCHAR(100) NOT NULL
-   );`;
+const query=`INSERT INTO (\`id\`,\`nome\`,\`esercizio\`,\`tipo\`,\`peso\`,\`serie\`,\`ripetizioni\`,\`img\`) VALUES (1,'Squat Bilanciere','1','Gambe','100Kg','5','20','https://www.evolutionfit.it/wp-content/uploads/quadricipiti-squat-bilanciere-parallelo-ag.png');`;
 client.query(query,(err)=>{
   if (err) throw err;
   console.log("FATTO")
 })
-res.end("OK");
+
 })
 
 app.get('/scheda/:esercizio', (req, res) => {
