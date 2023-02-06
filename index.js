@@ -20,20 +20,12 @@ const dominio = process.env.URL || "http://localhost:3000";
 
 app.get('/', async(req, res) => {
 
-    /*scheda.select().then((data) => {
-    //res.render('sito', { uscita: data, n_esercizio: "0",s_url:dominio });
-    res.json(data); 
-  })*/
-  try {
-    //await client.connect();                                 // gets connection
-    const { rows } = await client.query('SELECT * FROM scheda'); // sends queries
-    console.log(rows);
-    res.json (rows);
-} catch (error) {
-    console.error(error.stack);
-} finally {
-    //await client.end();                                     // closes connection
-}
+  client.query('SELECT * FROM scheda', (error, results) => {
+    if (error) {
+        throw error
+    }
+    res.json(results.rows)
+})
 
 })
 
