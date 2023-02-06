@@ -62,7 +62,7 @@ const updateScheda = (req, res) => {
   const {id} = req.params;
   const {peso,serie,ripetizioni} = req.query;
   
-  pool.query(`UPDATE scheda SET peso = $1, serie = $2, ripetizioni = $3  WHERE id = $4`,[peso, serie, ripetizioni, id],(error, results) => {
+  pool.query(`UPDATE scheda SET peso = '$1', serie = '$2', ripetizioni = '$3'  WHERE id = $4`,[peso, serie, ripetizioni, id],(error, results) => {
           if (error) {
               throw error
           }
