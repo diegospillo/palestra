@@ -23,25 +23,13 @@ app.set('view engine', 'ejs')
 
 //var scheda = require('./postgreSQL/query.js');
 const client = require("./postgreSQL/connection.js");
-const dominio = process.env.URL || "http://localhost:3000";
 
 app.get('/', client.getAllScheda);
 
 
 app.get('/scheda/:esercizio', client.getEsercizioScheda);
 
-app.get('/scheda/modifica/:id', (req, res) => {
-  const {id} = req.params;
-  scheda.select().then((data) => {
-    let schedaFiltrata = [...data]
-    if (id) {
-      schedaFiltrata = schedaFiltrata.filter((risp) => {
-        return String(risp.id) === id;
-      })
-    }
-    res.render('modifica',{val: schedaFiltrata, s_url:dominio})
-  })
-})
+app.get('/scheda/modifica/:id', client.getIdScheda)
 
 app.get('/scheda/modifica/:id/send', (req, res) => {
   const {id} = req.params;

@@ -41,6 +41,22 @@ const getEsercizioScheda = (req, res) => {
 })
 }
 
+const getIdScheda = (req, res) => {
+  const {id} = req.params;
+  pool.query('SELECT * FROM scheda', (error, results) => {
+    if (error) {
+        throw error
+    }
+    let schedaFiltrata = [...results.rows]
+    if (id) {
+      schedaFiltrata = schedaFiltrata.filter((risp) => {
+        return String(risp.id) === id;
+      })
+    }
+    res.render('modifica',{val: schedaFiltrata, s_url:dominio})
+  })
+}
+
 const updateUser = (req, res) => {
   const id = parseInt(req.params.id)
   const {
@@ -62,5 +78,6 @@ const updateUser = (req, res) => {
 module.exports = {
   getAllScheda,
   getEsercizioScheda,
+  getIdScheda,
   updateUser
 }
