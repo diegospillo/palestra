@@ -36,10 +36,20 @@ const client = new Client({
   console.log("Connected!");
   res.end("OK");
 });*/
-const query = `SELECT * FROM scheda`;
-        client.connect();                                 // gets connection
-        const { rows } = client.query(query); // sends queries
-        console.log(rows);
+const fetchUsers = async () => {
+  const query = `SELECT * FROM scheda`;
+  try {
+      await client.connect();                                 // gets connection
+      const { rows } = await client.query(query); // sends queries
+      console.log(rows);
+  } catch (error) {
+      console.error(error.stack);
+  } finally {
+      await client.end();                                     // closes connection
+  }
+};
+
+fetchUsers(); // username 
   
         //client.end();                                     // closes connection
 
