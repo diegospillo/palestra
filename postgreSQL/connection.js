@@ -1,5 +1,5 @@
-const { Client } = require('pg')
-const client = new Client({
+const Pool = require('pg').Pool
+const pool = new Pool({
   user: 'diegospillo',
   host: 'dpg-cfg1111a6gdma8lskmvg-a.frankfurt-postgres.render.com',
   database: 'palestra',
@@ -8,7 +8,7 @@ const client = new Client({
 })
 
 const getScheda = (req, res) => {
-  client.query('SELECT * FROM scheda', (error, results) => {
+  pool.query('SELECT * FROM scheda', (error, results) => {
       if (error) {
           throw error
       }
