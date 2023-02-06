@@ -18,16 +18,8 @@ app.set('view engine', 'ejs')
 const client = require("./postgreSQL/connection.js");
 const dominio = process.env.URL || "http://localhost:3000";
 
-app.get('/', (req, res) => {
+app.get('/', client.getScheda);
 
-  client.query('SELECT * FROM scheda', (error, results) => {
-    if (error) {
-        throw error
-    }
-    res.json(results.rows)
-})
-
-})
 
 app.get('/scheda/:esercizio', (req, res) => {
   const { esercizio } = req.params

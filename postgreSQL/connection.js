@@ -7,5 +7,34 @@ const client = new Client({
   port: '5432',
 })
 
-console.log("connesso")
-module.exports = client;
+const getScheda = (req, res) => {
+  client.query('SELECT * FROM scheda', (error, results) => {
+      if (error) {
+          throw error
+      }
+      res.status(200).json(results.rows)
+  })
+}
+
+const updateUser = (req, res) => {
+  const id = parseInt(req.params.id)
+  const {
+      name,
+      email
+  } = request.body
+  pool.query(
+      'UPDATE users SET name = $1, email = $2 WHERE id = $3',
+      [name, email, id],
+      (error, results) => {
+          if (error) {
+              throw error
+          }
+          res.status(200).send(`User modified with ID: ${id}`)
+      }
+  )
+}
+
+module.exports = {
+  getScheda,
+  updateUser
+}
