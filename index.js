@@ -19,10 +19,12 @@ const dominio = process.env.URL || "http://localhost:3000";
 
 app.get('/', (req, res) => {
 
-    scheda.select().then((data) => {
+    /*scheda.select().then((data) => {
     //res.render('sito', { uscita: data, n_esercizio: "0",s_url:dominio });
     res.json(data); 
-  })
+  })*/
+  var data = scheda.select();
+  res.json(data);
 })
 
 app.get('/scheda/:esercizio', (req, res) => {

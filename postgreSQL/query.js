@@ -8,18 +8,12 @@ module.exports = {
         console.log("Success");
       });
     },
-    select: () =>{return new Promise(async(resolve, reject) => {
+    select: async() =>{
       //console.log("Select")
       const query = `SELECT * FROM scheda`;
-  try {
       await client.connect();                                 // gets connection
       const { rows } = await client.query(query); // sends queries
-      resolve(rows);
-  } catch (error) {
-      console.error(error.stack);
-  } finally {
       await client.end();                                     // closes connection
-  }
-    })
+      return rows;
     }
   }
