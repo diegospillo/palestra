@@ -14,16 +14,26 @@ app.use('/img', express.static(__dirname + 'public/img'))
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
-var scheda = require('./postgreSQL/query.js');
+//var scheda = require('./postgreSQL/query.js');
+const client = require("./connection.js");
 const dominio = process.env.URL || "http://localhost:3000";
 
-app.get('/', (req, res) => {
+app.get('/', async(req, res) => {
 
-    scheda.select().then((data) => {
+    /*scheda.select().then((data) => {
     //res.render('sito', { uscita: data, n_esercizio: "0",s_url:dominio });
     res.json(data); 
-  })
-  
+  })*/
+  try {
+    await client.connect();                                 // gets connection
+    const { rows } = await client.query('SELECT * FROM scheda'); // sends queries
+    console.log(rows);
+} catch (error) {
+    console.error(error.stack);
+} finally {
+    await client.end();                                     // closes connection
+}
+
 })
 
 app.get('/scheda/:esercizio', (req, res) => {
