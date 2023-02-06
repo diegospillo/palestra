@@ -1,5 +1,6 @@
 const client = require("./connection.js");
 
+
 module.exports = { 
     ins : (id,peso,serie,ripetizioni) =>{
       //console.log("Insert")
@@ -13,7 +14,7 @@ module.exports = {
             if (err) {
               console.log(err.stack)
             } else {
-              console.log(res)
+              resolve(res);
             }
           })
     })
