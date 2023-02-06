@@ -8,12 +8,14 @@ module.exports = {
         console.log("Success");
       });
     },
-    select: async() =>{
-      //console.log("Select")
-      const query = `SELECT * FROM scheda`;
-      await client.connect();                                 // gets connection
-      const { rows } = await client.query(query); // sends queries
-      await client.end();                                     // closes connection
-      return rows;
+    select: () =>{return new Promise((resolve, reject) => {
+        client.query('SELECT * FROM scheda', (err, res) => {
+            if (err) {
+              console.log(err.stack)
+            } else {
+              console.log(res)
+            }
+          })
+    })
     }
   }
