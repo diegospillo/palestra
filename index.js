@@ -32,7 +32,7 @@ app.get('/scheda/:esercizio', client.getEsercizioScheda);
 
 app.get('/scheda/modifica/:id', client.getIdScheda)
 
-app.put('/scheda/modifica/:id/send', client.updateScheda)
+app.get('/scheda/modifica/:id/send', client.updateScheda)
 
 app.listen(process.env.PORT || 3000, () =>{
   console.log("listen")
