@@ -14,61 +14,15 @@ app.use('/img', express.static(__dirname + 'public/img'))
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
-//var scheda = require('./mysql/query.js');
+var scheda = require('./postgreSQL/query.js');
 const dominio = process.env.URL || "http://localhost:3000";
 
 app.get('/', (req, res) => {
 
-    /*scheda.select().then((data) => {
+    scheda.select().then((data) => {
     //res.render('sito', { uscita: data, n_esercizio: "0",s_url:dominio });
     res.json(data); 
-  })*/
-  const { Client } = require('pg')
-const client = new Client({
-  user: 'diegospillo',
-  host: 'dpg-cfg1111a6gdma8lskmvg-a',
-  database: 'palestra',
-  password: 'htBgzUNs9G9GBCFC2nPexpa9j16uNkNP',
-  port: '5432',
-})
-/*client.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  res.end("OK");
-});*/
-const fetchUsers = async () => {
-  const query = `SELECT * FROM scheda`;
-  try {
-      await client.connect();                                 // gets connection
-      const { rows } = await client.query(query); // sends queries
-      console.log(rows);
-  } catch (error) {
-      console.error(error.stack);
-  } finally {
-      await client.end();                                     // closes connection
-  }
-};
-
-fetchUsers(); // username 
-  
-        //client.end();                                     // closes connection
-
-/*
-try {
-  client.connect();           // gets connection
-  client.query("INSERT INTO scheda (id, nome, esercizio, tipo, peso, serie, ripetizioni, img) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
-  [1,'Squat Bilanciere','1','Gambe','100Kg','5','20','https://www.evolutionfit.it/wp-content/uploads/quadricipiti-squat-bilanciere-parallelo-ag.png']);
-} catch (error) {
-  console.error(error.stack);
-} finally {
-  client.end();               // closes connection
-}
-*/
-
-
-
-//client.query("INSERT INTO scheda (id, nome, esercizio, tipo, peso, serie, ripetizioni, img) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",[1,'Squat Bilanciere','1','Gambe','100Kg','5','20','https://www.evolutionfit.it/wp-content/uploads/quadricipiti-squat-bilanciere-parallelo-ag.png']).catch(err => console.log(err));
-res.end("OK");
+  })
 })
 
 app.get('/scheda/:esercizio', (req, res) => {
