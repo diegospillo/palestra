@@ -25,14 +25,14 @@ app.get('/', async(req, res) => {
     res.json(data); 
   })*/
   try {
-    await client.connect();                                 // gets connection
+    //await client.connect();                                 // gets connection
     const { rows } = await client.query('SELECT * FROM scheda'); // sends queries
     console.log(rows);
-    res.json(rows);
+    res.json (rows);
 } catch (error) {
     console.error(error.stack);
 } finally {
-    await client.end();                                     // closes connection
+    //await client.end();                                     // closes connection
 }
 
 })
