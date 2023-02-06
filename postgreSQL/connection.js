@@ -21,7 +21,7 @@ const getAllScheda = (req, res) => {
 const getEsercizioScheda = (req, res) => {
   const { esercizio } = req.params
 
-  pool.query('SELECT * FROM scheda', (error, results) => {
+  pool.query('SELECT * FROM scheda ORDER BY $1',['id'], (error, results) => {
     if (error) {
         throw error
     }
