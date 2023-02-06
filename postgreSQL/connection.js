@@ -1,4 +1,5 @@
 const Pool = require('pg').Pool
+const dominio = process.env.URL || "http://localhost:3000";
 
 const pool = new Pool({
   user: 'diegospillo',
