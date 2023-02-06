@@ -2,11 +2,11 @@ const Pool = require('pg').Pool
 const dominio = process.env.URL || "http://localhost:3000";
 
 const pool = new Pool({
-  user: 'diegospillo',
-  host: 'dpg-cfg1111a6gdma8lskmvg-a',
-  database: 'palestra',
-  password: 'htBgzUNs9G9GBCFC2nPexpa9j16uNkNP',
-  port: 5432,
+  user: process.env.MYSQL_USER,
+  host: process.env.MYSQL_HOST,
+  database: process.env.MYSQL_DB,
+  password: process.env.MYSQL_PASS,
+  port: process.env.MYSQL_PORT,
 })
 
 const getAllScheda = (req, res) => {
@@ -62,7 +62,7 @@ const updateScheda = (req, res) => {
   const {id} = req.params;
   const {peso,serie,ripetizioni} = req.query;
   
-  pool.query(`UPDATE users SET peso = $1, serie = $2, ripetizioni = $3  WHERE id = $4`,[peso, serie, ripetizioni, id],(error, results) => {
+  pool.query(`UPDATE scheda SET peso = $1, serie = $2, ripetizioni = $3  WHERE id = $4`,[peso, serie, ripetizioni, id],(error, results) => {
           if (error) {
               throw error
           }
