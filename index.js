@@ -25,31 +25,10 @@ app.set('view engine', 'ejs')
 const client = require("./postgreSQL/connection.js");
 const dominio = process.env.URL || "http://localhost:3000";
 
-app.get('/', (req,res)=>{
-  client.getScheda(req,res);
-});
+app.get('/', client.getAllScheda);
 
 
-app.get('/scheda/:esercizio', (req, res) => {
-  const { esercizio } = req.params
-
-  scheda.select().then((data) => {
-    let schedaFiltrata = [...data]
-    if (esercizio) {
-      schedaFiltrata = schedaFiltrata.filter((risp) => {
-        return String(risp.esercizio) === esercizio
-      })
-      schedaFiltrata = schedaFiltrata.map((risp) => {
-        const { id, nome, peso, img, serie, ripetizioni } = risp;
-        return { id, nome, peso, img, serie, ripetizioni };
-      })
-    }
-    /*if(schedaFiltrata.length<1){
-      return res.status(404).json({messaggio:"non trovato", code:404})
-    }*/
-    res.render('sito', { uscita: schedaFiltrata, n_esercizio: esercizio, s_url:dominio })
-  })
-})
+app.get('/scheda/:esercizio', client.getEsercizioScheda);
 
 app.get('/scheda/modifica/:id', (req, res) => {
   const {id} = req.params;
