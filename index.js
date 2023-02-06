@@ -32,12 +32,7 @@ app.get('/scheda/:esercizio', client.getEsercizioScheda);
 
 app.get('/scheda/modifica/:id', client.getIdScheda)
 
-app.get('/scheda/modifica/:id/send', (req, res) => {
-  const {id} = req.params;
-  const {peso,serie,ripetizioni} = req.query;
-  scheda.ins(id,peso,serie,ripetizioni);
-  res.render('risposta',{s_url:dominio});
-})
+app.get('/scheda/modifica/:id/send', client.updateScheda)
 
 app.listen(process.env.PORT || 3000, () =>{
   console.log("listen")
