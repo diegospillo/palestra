@@ -57,20 +57,16 @@ const getIdScheda = (req, res) => {
   })
 }
 
-const updateUser = (req, res) => {
-  const id = parseInt(req.params.id)
-  const {
-      name,
-      email
-  } = request.body
-  pool.query(
-      'UPDATE users SET name = $1, email = $2 WHERE id = $3',
-      [name, email, id],
-      (error, results) => {
+const updateScheda = (req, res) => {
+
+  const {id} = req.params;
+  const {peso,serie,ripetizioni} = req.query;
+  
+  pool.query(`UPDATE users SET peso = $1, serie = $2, ripetizioni = $3  WHERE id = $4`,[peso, serie, ripetizioni, id],(error, results) => {
           if (error) {
               throw error
           }
-          res.status(200).send(`User modified with ID: ${id}`)
+          res.render('risposta',{s_url:dominio});
       }
   )
 }
@@ -79,5 +75,5 @@ module.exports = {
   getAllScheda,
   getEsercizioScheda,
   getIdScheda,
-  updateUser
+  updateScheda
 }

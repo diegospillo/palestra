@@ -1,18 +1,20 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+
 /*DEPLOY
 git add .
 git commit -m "First Commit"
 git push origin main
 */
-//app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({
         extended: true,
     })
 )
+
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))
 app.use('/js', express.static(__dirname + 'public/js'))
@@ -21,7 +23,6 @@ app.use('/img', express.static(__dirname + 'public/img'))
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
-//var scheda = require('./postgreSQL/query.js');
 const client = require("./postgreSQL/connection.js");
 
 app.get('/', client.getAllScheda);
